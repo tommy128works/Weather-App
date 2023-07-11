@@ -5,15 +5,22 @@ import * as bootstrap from "bootstrap";
 // // import { onStartUp } from "./dataHandler";
 
 // UI modules
-import { header } from "./header";
-import footer from "./footer";
+// // import { header } from "./header";
+// // import footer from "./footer";
 
-document.body.appendChild(header());
+let topPanel = document.createElement("div");
+topPanel.classList.add("top-panel");
 
-let mainContainer = document.createElement("div");
-mainContainer.setAttribute("id", "main-container");
-mainContainer.classList.add("main-container");
-document.body.appendChild(mainContainer);
+let leftPanel = document.createElement("div");
+leftPanel.classList.add("left-panel");
+topPanel.appendChild(leftPanel);
 
-document.body.appendChild(footer());
+let rightPanel = document.createElement("div");
+rightPanel.classList.add("right-panel");
+topPanel.appendChild(rightPanel);
 
+document.body.appendChild(topPanel);
+
+let bottomPanel = document.createElement("div");
+bottomPanel.classList.add("bottom-panel");
+document.body.appendChild(bottomPanel);
