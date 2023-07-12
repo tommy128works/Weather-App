@@ -1,12 +1,3 @@
-// Feels Like
-// Humidity
-// Chance of Rain
-// Precipitation
-// Wind Speed
-// UV Index
-// Sunrise - optional
-// Sunset - optional
-
 // put this into its own module because other modules will need this info
 // getWeatherIcon();
 // needs an additional array that matches API data code with array index
@@ -14,9 +5,15 @@ const images = require.context("../assets/weather/64x64/day", true);
 const dayImageList = images.keys().map(image => images(image));
 const nightImageList = images.keys().map(image => images(image));
 
-// dummy image
-// need to replace this with an array of images from folder of weatherDetails icons
-import Icon from "../assets/weather/64x64/day/113.png";
+// actual images
+import feelsLikeIcon from "../assets/weather-details-icons/feels-like.png";
+import humidityIcon from "../assets/weather-details-icons/humidity.png";
+import chanceOfRainIcon from "../assets/weather-details-icons/chance-of-rain.png";
+import precipitationIcon from "../assets/weather-details-icons/precipitation.png";
+import windSpeedIcon from "../assets/weather-details-icons/wind-speed.png";
+import UVIndexIcon from "../assets/weather-details-icons/UV-index.png";
+import sunriseIcon from "../assets/weather-details-icons/sunrise.png";
+import sunsetIcon from "../assets/weather-details-icons/sunset.png";
 
 const createDetail = (property, value, imagePath) => {
   let container = document.createElement("div");
@@ -24,10 +21,34 @@ const createDetail = (property, value, imagePath) => {
 
   let leftPanel = document.createElement("div");
   leftPanel.classList.add("left-panel");
-  
-  // dummy image for now
+
   const myIcon = new Image();
-  myIcon.src = Icon;
+  switch (property) {
+    case "Feels Like":
+      myIcon.src = feelsLikeIcon;
+      break;
+    case "Humidity":
+      myIcon.src = humidityIcon;
+      break;
+    case "Chance of Rain":
+      myIcon.src = chanceOfRainIcon;
+      break;
+    case "Precipitation":
+      myIcon.src = precipitationIcon;
+      break;
+    case "Wind Speed":
+      myIcon.src = windSpeedIcon;
+      break;
+    case "UV Index":
+      myIcon.src = UVIndexIcon;
+      break;
+    case "Sunrise":
+      myIcon.src = sunriseIcon;
+      break;
+    case "Sunset":
+      myIcon.src = sunsetIcon;
+      break;
+  }
   leftPanel.appendChild(myIcon);
   container.appendChild(leftPanel);
 
@@ -62,7 +83,7 @@ const createWeatherDetails = () => {
   container.appendChild(createDetail("UV Index", "0.56"));
   container.appendChild(createDetail("Sunrise", "23:07"));
   container.appendChild(createDetail("Sunset", "16:07"));
-  
+
   return container;
 };
 
