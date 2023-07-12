@@ -1,8 +1,13 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
+* {
+  border: solid 2px red;
+}
+
 body {
   margin: 0;
+  padding: 10px;
   background-color: #dddddd;
 
   display: flex;
@@ -35,17 +40,24 @@ footer {
   cursor: pointer;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .large-font {
   font-size: 2.5rem;
 }
 
 .medium-font {
   font-size: 1.5rem;
-  margin: 5px;
 }
 
 .small-font {
   font-size: 1rem;
+}
+
+.smallest-font {
+  font-size: 0.75rem;
 }
 
 .top-panel {
@@ -55,19 +67,45 @@ footer {
 }
 
 .left-panel {
-  background-color: red;
   flex: 1;
 }
 
 .right-panel {
-  background-color: blue;
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .bottom-panel {
-  background-color: green;
   flex: 1;
 }
+
+.weather-detail-container {
+  display: flex;
+  width: 15vw;
+
+  img {
+    max-height: 50px;
+    width: auto;
+  }
+
+  .left-panel {
+    flex: 1;
+  }
+
+  .right-panel {
+    flex: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+
 
 @media (max-width: 600px) {
   $content-width: 95vw;
