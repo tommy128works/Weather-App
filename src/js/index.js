@@ -5,13 +5,13 @@ import * as bootstrap from "bootstrap";
 // // import { onStartUp } from "./dataHandler";
 
 // UI modules
-// // import { header } from "./header";
+import createControlCenter from "./controlCenterUI";
 // // import footer from "./footer";
 
 let topPanel = document.createElement("div");
 topPanel.classList.add("top-panel");
 
-let leftPanel = document.createElement("div");
+let leftPanel = createControlCenter(); 
 leftPanel.classList.add("left-panel");
 topPanel.appendChild(leftPanel);
 
