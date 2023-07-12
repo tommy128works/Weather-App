@@ -4,8 +4,6 @@
 // Current Time
 // Toggle temperature units
 
-
-
 const createControlCenter = () => {
   let container = document.createElement("div");
 
@@ -40,9 +38,7 @@ const createControlCenter = () => {
   temperatureUnitsButton.classList.add("small-font");
   container.appendChild(temperatureUnitsButton);
 
-
   return container;
 };
-
 
 export default createControlCenter;

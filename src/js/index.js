@@ -6,16 +6,17 @@ import * as bootstrap from "bootstrap";
 
 // UI modules
 import createControlCenter from "./controlCenterUI";
+import createWeatherDetails from "./weatherDetailsUI";
 // // import footer from "./footer";
 
 let topPanel = document.createElement("div");
 topPanel.classList.add("top-panel");
 
-let leftPanel = createControlCenter(); 
+let leftPanel = createControlCenter();
 leftPanel.classList.add("left-panel");
 topPanel.appendChild(leftPanel);
 
-let rightPanel = document.createElement("div");
+let rightPanel = createWeatherDetails();
 rightPanel.classList.add("right-panel");
 topPanel.appendChild(rightPanel);
 
