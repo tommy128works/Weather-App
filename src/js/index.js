@@ -10,7 +10,7 @@ import createWeatherDetails from "./weatherDetailsUI";
 // // import footer from "./footer";
 
 let topPanel = document.createElement("div");
-topPanel.classList.add("top-panel");
+topPanel.classList.add("panel-container");
 
 let leftPanel = createControlCenter();
 leftPanel.classList.add("left-panel");

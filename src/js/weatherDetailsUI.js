@@ -2,8 +2,8 @@
 // getWeatherIcon();
 // needs an additional array that matches API data code with array index
 const images = require.context("../assets/weather/64x64/day", true);
-const dayImageList = images.keys().map(image => images(image));
-const nightImageList = images.keys().map(image => images(image));
+const dayImageList = images.keys().map((image) => images(image));
+const nightImageList = images.keys().map((image) => images(image));
 
 // actual images
 import feelsLikeIcon from "../assets/weather-details-icons/feels-like.png";
@@ -15,7 +15,7 @@ import UVIndexIcon from "../assets/weather-details-icons/UV-index.png";
 import sunriseIcon from "../assets/weather-details-icons/sunrise.png";
 import sunsetIcon from "../assets/weather-details-icons/sunset.png";
 
-const createDetail = (property, value, imagePath) => {
+const createDetail = (property, value) => {
   let container = document.createElement("div");
   container.classList.add("weather-detail-container");
 
@@ -54,23 +54,21 @@ const createDetail = (property, value, imagePath) => {
 
   let rightPanel = document.createElement("div");
   rightPanel.classList.add("right-panel");
-  
+
   let weatherProperty = document.createElement("div");
   weatherProperty.textContent = property;
   weatherProperty.classList.add("smallest-font");
   rightPanel.appendChild(weatherProperty);
-  
+
   let weatherPropertyValue = document.createElement("div");
   weatherPropertyValue.textContent = value;
   weatherPropertyValue.classList.add("small-font");
   rightPanel.appendChild(weatherPropertyValue);
-  
+
   container.appendChild(rightPanel);
 
   return container;
-}
-
-
+};
 
 const createWeatherDetails = () => {
   let container = document.createElement("div");
