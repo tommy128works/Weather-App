@@ -110,6 +110,9 @@ footer {
   overflow: auto;
   cursor: grab;
 
+}
+
+.hourly-weather-container {
   div {
     width: 10vw;
 
@@ -121,6 +124,17 @@ footer {
   img {
     pointer-events: none;
     cursor: default;
+  }
+}
+
+.daily-weather-container {
+
+  div {
+    display: flex;
+
+    div {
+      flex: 1;
+    }
   }
 }
 

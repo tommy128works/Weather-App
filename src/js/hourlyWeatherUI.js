@@ -26,7 +26,7 @@ const createHourlyWeatherItem = () => {
 
 const createHourlyWeather = () => {
   let container = document.createElement("div");
-  container.classList.add("horizontal-scroll-container");
+  container.classList.add("horizontal-scroll-container", "hourly-weather-container");
   container.setAttribute("id", "hourly-weather-container");
 
   for (let i = 0; i < 24; i++) {
