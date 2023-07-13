@@ -13,7 +13,7 @@ import createDailyWeather from "./dailyWeatherUI";
 import createFooter from "./footer";
 
 let topPanel = document.createElement("div");
-topPanel.classList.add("panel-container");
+topPanel.classList.add("panel-container", "top-panel");
 
 let leftPanel = createControlCenter();
 leftPanel.classList.add("left-panel");

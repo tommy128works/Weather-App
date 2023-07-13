@@ -7,18 +7,20 @@
 
 body {
   margin: 0;
-  padding: 10px;
   background-color: #dddddd;
 
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 footer {
+  background-color: #8c8c8c;
   color: black;
   display: flex;
   justify-content: center;
+  column-gap: 5px;
   align-items: center;
 }
 
@@ -65,6 +67,10 @@ footer {
   display: flex;
 }
 
+.top-panel {
+  margin: 10px;
+}
+
 .left-panel {
   flex: 1;
 }
@@ -79,6 +85,7 @@ footer {
 
 .bottom-panel {
   flex: 1;
+  margin: 10px;
 }
 
 .weather-detail-container {
@@ -138,7 +145,32 @@ footer {
 }
 
 @media (max-width: 600px) {
-  $content-width: 95vw;
+  $mobile-content-width: 95vw;
+
+  .top-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weather-detail-container {
+    display: flex;
+    width: 30vw;
+    margin: 10px;  
+  }
+
+  .hourly-weather-container {
+    div {
+      width: 25vw;
+    }
+  }
+
+  footer {
+    flex-direction: column;
+
+    .divider {
+      display: none;
+    }
+  }
 
   // .main-container {
   //   flex-wrap: wrap;
