@@ -15,7 +15,7 @@ import UVIndexIcon from "../assets/weather-details-icons/UV-index.png";
 import sunriseIcon from "../assets/weather-details-icons/sunrise.png";
 import sunsetIcon from "../assets/weather-details-icons/sunset.png";
 
-const createDetail = (property, value) => {
+const createWeatherDetailItem = (property, value) => {
   let container = document.createElement("div");
   container.classList.add("weather-detail-container");
 
@@ -73,14 +73,14 @@ const createDetail = (property, value) => {
 const createWeatherDetails = () => {
   let container = document.createElement("div");
 
-  container.appendChild(createDetail("Feels Like", "25 °C"));
-  container.appendChild(createDetail("Humidity", "46 %"));
-  container.appendChild(createDetail("Chance of Rain", "1 %"));
-  container.appendChild(createDetail("Precipitation", "1.47 cm")); // units depend on what WeatherAPI returns
-  container.appendChild(createDetail("Wind Speed", "9.6 km/h"));
-  container.appendChild(createDetail("UV Index", "0.56"));
-  container.appendChild(createDetail("Sunrise", "23:07"));
-  container.appendChild(createDetail("Sunset", "16:07"));
+  container.appendChild(createWeatherDetailItem("Feels Like", "25 °C"));
+  container.appendChild(createWeatherDetailItem("Humidity", "46 %"));
+  container.appendChild(createWeatherDetailItem("Chance of Rain", "1 %"));
+  container.appendChild(createWeatherDetailItem("Precipitation", "1.47 cm")); // units depend on what WeatherAPI returns
+  container.appendChild(createWeatherDetailItem("Wind Speed", "9.6 km/h"));
+  container.appendChild(createWeatherDetailItem("UV Index", "0.56"));
+  container.appendChild(createWeatherDetailItem("Sunrise", "23:07"));
+  container.appendChild(createWeatherDetailItem("Sunset", "16:07"));
 
   return container;
 };

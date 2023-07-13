@@ -1,9 +1,3 @@
-// Current weather
-// Current location setting
-// Today's Date
-// Current Time
-// Toggle temperature units
-
 const createControlCenter = () => {
   let container = document.createElement("div");
 

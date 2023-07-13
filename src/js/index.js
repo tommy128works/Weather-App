@@ -7,6 +7,8 @@ import * as bootstrap from "bootstrap";
 // UI modules
 import createControlCenter from "./controlCenterUI";
 import createWeatherDetails from "./weatherDetailsUI";
+import createHourlyWeather from "./hourlyWeatherUI";
+import addDragToScroll from "./addDragToScroll";
 // // import footer from "./footer";
 
 let topPanel = document.createElement("div");
@@ -24,4 +26,9 @@ document.body.appendChild(topPanel);
 
 let bottomPanel = document.createElement("div");
 bottomPanel.classList.add("bottom-panel");
+bottomPanel.appendChild(createHourlyWeather());
+
 document.body.appendChild(bottomPanel);
+
+addDragToScroll("hourly-weather-container");
+
