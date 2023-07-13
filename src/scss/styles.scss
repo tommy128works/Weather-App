@@ -1,9 +1,9 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
-* {
-  border: solid 2px red;
-}
+// * {
+//   border: solid 2px red;
+// }
 
 body {
   margin: 0;
@@ -15,9 +15,8 @@ body {
   min-height: 100vh;
 }
 
-// this footer code would be needed for bottom panel
 footer {
-  color: white;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +25,7 @@ footer {
 .footer-icon {
   height: 1.5rem;
   width: auto;
-  color: white;
+  color: black;
   margin: 5px;
 }
 

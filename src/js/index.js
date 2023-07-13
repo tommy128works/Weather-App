@@ -10,7 +10,7 @@ import createWeatherDetails from "./weatherDetailsUI";
 import createHourlyWeather from "./hourlyWeatherUI";
 import addDragToScroll from "./addDragToScroll";
 import createDailyWeather from "./dailyWeatherUI";
-// // import footer from "./footer";
+import createFooter from "./footer";
 
 let topPanel = document.createElement("div");
 topPanel.classList.add("panel-container");
@@ -31,6 +31,7 @@ bottomPanel.appendChild(createHourlyWeather());
 bottomPanel.appendChild(createDailyWeather());
 
 document.body.appendChild(bottomPanel);
-
 addDragToScroll("hourly-weather-container");
+
+document.body.appendChild(createFooter());
 

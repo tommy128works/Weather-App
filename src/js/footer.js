@@ -1,29 +1,34 @@
-import githubLogo from "./images/github-mark-white.svg";
+import githubLogo from "../assets/github-mark-white.svg";
 
-const footer = () => {
+const createFooter = () => {
   let footer = document.createElement("footer");
-  footer.classList.add("bg-dark");
-  // footer.setAttribute("data-bs-theme", "dark");
 
-  // credit to icons
+  let copyright = document.createElement("span");
+  copyright.textContent = "Copyright © 2023 tommy128works";
+  footer.appendChild(copyright);
 
-  // copyright = Copyright (c) 2023 tommy128works
-  let span = document.createElement("span");
-  span.textContent = "Copyright © 2023 tommy128works";
-  footer.appendChild(span);
-
-  // github icon
-  let anchor = document.createElement("a");
-  anchor.setAttribute("target", "_blank");
-  anchor.setAttribute("href", "https://github.com/tommy128works/Todo-List");
+  let githubAnchor = document.createElement("a");
+  githubAnchor.setAttribute("target", "_blank");
+  githubAnchor.setAttribute("href", "https://github.com/tommy128works/Weather-App");
   let img = new Image();
   img.src = githubLogo;
   img.classList.add("footer-icon");
 
-  anchor.appendChild(img);
-  footer.appendChild(anchor);
+  githubAnchor.appendChild(img);
+  footer.appendChild(githubAnchor);
+
+  let weatherAPIContainer = document.createElement("span");
+  weatherAPIContainer.textContent = "| Powered by ";
+
+  let weatherAPI = document.createElement("a");
+  weatherAPI.setAttribute("href", "https://www.weatherapi.com/");
+  weatherAPI.setAttribute("target", "_blank");
+  weatherAPI.textContent = "WeatherAPI.com";
+  
+  weatherAPIContainer.appendChild(weatherAPI);
+  footer.appendChild(weatherAPIContainer);
 
   return footer;
 };
 
-export default footer;
+export default createFooter;
