@@ -12,7 +12,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
 }
 
 footer {
@@ -115,7 +114,6 @@ footer {
   display: flex;
   overflow: auto;
   cursor: grab;
-
 }
 
 .hourly-weather-container {
@@ -134,7 +132,6 @@ footer {
 }
 
 .daily-weather-container {
-
   div {
     display: flex;
 
@@ -155,7 +152,7 @@ footer {
   .weather-detail-container {
     display: flex;
     width: 30vw;
-    margin: 10px;  
+    margin: 10px;
   }
 
   .hourly-weather-container {
@@ -171,17 +168,4 @@ footer {
       display: none;
     }
   }
-
-  // .main-container {
-  //   flex-wrap: wrap;
-  //   justify-content: space-around;
-  // }
-
-  // .sidebar-section {
-  //   width: $content-width;
-  // }
-
-  // .content-section {
-  //   width: $content-width;
-  // }
 }

@@ -1,4 +1,4 @@
-const createControlCenter = () => {
+const createControlCenter = (weatherCondition, location, date, time, tempC, tempF) => {
   let container = document.createElement("div");
 
   let currentWeather = document.createElement("div");

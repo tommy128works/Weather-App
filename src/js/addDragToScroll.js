@@ -42,7 +42,7 @@ const addDragToScroll = (id) => {
     ele.style.removeProperty("user-select");
   };
 
-  ele.addEventListener('mousedown', mouseDownHandler);
+  ele.addEventListener("mousedown", mouseDownHandler);
 };
 
 export default addDragToScroll;
