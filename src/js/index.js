@@ -75,8 +75,19 @@ const loadPage = async (location) => {
     );
 
     let dailyData = filterForecastDataForDailyWeather(forecastData);
-    console.log(dailyData);
-    bottomPanel.appendChild(createDailyWeather());
+    bottomPanel.appendChild(
+      createDailyWeather(
+        dailyData.dates,
+        dailyData.weatherIcons,
+        dailyData.rainChances,
+        dailyData.snowChances,
+        dailyData.maxTempsC,
+        dailyData.minTempsC,
+        dailyData.maxTempsF,
+        dailyData.minTempsF
+      )
+    );
+    console.log(dailyData.dates);
 
     document.body.appendChild(bottomPanel);
     addDragToScroll("hourly-weather-container");
@@ -89,4 +100,4 @@ const loadPage = async (location) => {
 };
 
 // loadPage("lOS ANGELES");
-loadPage("valdez");
+loadPage("mississauga");

@@ -35,36 +35,100 @@ const filterForecastDataForDailyWeather = (forecastData) => {
   };
 };
 
-const createDailyWeatherItem = () => {
+const createDailyWeatherItem = (
+  date,
+  weatherIcon,
+  rainChance,
+  snowChance,
+  maxTempC,
+  minTempC,
+  maxTempF,
+  minTempF
+) => {
   let container = document.createElement("div");
 
-  // Day > put dummy for now because API might give day of week for html textContent
-  let day = document.createElement("div");
-  day.textContent = "Monday";
-  container.appendChild(day);
+  const d = new Date(date);
+  // new Date() subtracts a day automatically.
+  // I add 1 to compensate for this bug.
+  let day = d.getDay() + 1; 
 
-  // weather icon
-  // need to call weatherIcon module to decide what icon to input
-  // for now, put a dummy icon provided by WeatherAPI
+  let dayOfTheWeek = document.createElement("div");
+  switch (day) {
+    case 0:
+      dayOfTheWeek.textContent = "Sunday";
+      break;
+    case 1:
+      dayOfTheWeek.textContent = "Monday";
+      break;
+    case 2:
+      dayOfTheWeek.textContent = "Tuesday";
+      break;
+    case 3:
+      dayOfTheWeek.textContent = "Wednesday";
+      break;
+    case 4:
+      dayOfTheWeek.textContent = "Thursday";
+      break;
+    case 5:
+      dayOfTheWeek.textContent = "Friday";
+      break;
+    case 6:
+      dayOfTheWeek.textContent = "Saturday";
+      break;
+  }
+  container.appendChild(dayOfTheWeek);
+
+  let weatherContainer = document.createElement("div");
   const myIcon = new Image();
-  // myIcon.src = dummyIcon;
-  container.appendChild(myIcon);
+  myIcon.src = weatherIcon;
+  weatherContainer.appendChild(myIcon);
 
-  // Daily Temperature > use H:temp L:Temp format
-  let temperature = document.createElement("div");
-  temperature.textContent = "20 °C 10 °C";
-  container.appendChild(temperature);
+  let precipitationChance = document.createElement("div");
+  if (rainChance > snowChance) {
+    precipitationChance.textContent = rainChance + "%";
+  } else if (snowChance > rainChance) {
+    precipitationChance.textContent = snowChance + "%";
+  } else if (rainChance === snowChance && rainChance !== 0) {
+    precipitationChance.textContent = rainChance + "%";
+  }
+  weatherContainer.appendChild(precipitationChance);
+  container.appendChild(weatherContainer);
+
+  let temperatureC = document.createElement("div");
+  temperatureC.textContent = "High: " + maxTempC + "°C Low: " + minTempC + "°C"; 
+  container.appendChild(temperatureC);
+  
+  let temperatureF = document.createElement("div");
+  temperatureF.textContent = "High: " + maxTempF + "°F Low: " + minTempF + "°F"; 
+  container.appendChild(temperatureF);
 
   return container;
 };
 
-const createDailyWeather = () => {
+const createDailyWeather = (
+  dates,
+  weatherIcons,
+  rainChances,
+  snowChances,
+  maxTempsC,
+  minTempsC,
+  maxTempsF,
+  minTempsF
+) => {
   let container = document.createElement("div");
   container.classList.add("daily-weather-container");
-  // container.setAttribute("id", "hourly-weather-container");
 
-  for (let i = 0; i < 7; i++) {
-    container.appendChild(createDailyWeatherItem());
+  for (let i = 0; i < MAXIMUM_FORECAST_DAYS; i++) {
+    container.appendChild(createDailyWeatherItem(
+      dates[i],
+      weatherIcons[i],
+      rainChances[i],
+      snowChances[i],
+      maxTempsC[i],
+      minTempsC[i],
+      maxTempsF[i],
+      minTempsF[i]
+    ));
   }
 
   return container;
