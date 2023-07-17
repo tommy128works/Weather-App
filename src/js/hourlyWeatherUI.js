@@ -1,5 +1,44 @@
-// dummy image until weatherIcon module is coded
-// import dummyIcon from "../assets/weather/64x64/day/113.png";
+const MAXIMUM_HOURLY_FORECAST = 25;
+
+const convert24HourTo12Hour = (number) => {
+  if (number === 0) {
+    return "12AM";
+  } else if (number < 12) {
+    return number + "AM";
+  } else if (number === 12) {
+    return "12PM";
+  } else if (number > 12 && number < 24) {
+    return number - 12 + "PM";
+  } else if (number >= 24) {
+    return convert24HourTo12Hour(number - 24);
+  }
+};
+
+const filterForecastDataForHourlyWeather = (forecastData) => {
+  let localTime = forecastData.location.localtime.split(" ");
+  let currentLocalTime = localTime[1].split(":");
+  let startingHour = Number(currentLocalTime[0]);
+
+  let hoursArray = [];
+
+  // need to create 25-index array for each property
+  for (let i = 0; i < MAXIMUM_HOURLY_FORECAST; i++) {
+    // hours
+    if (i === 0) {
+      hoursArray[i] = "Now";
+    } else {
+      hoursArray[i] = convert24HourTo12Hour(startingHour + i);
+    }
+    // hourly weather icon
+    // hourly temperature
+    // hourly will it rain
+    // hourly will it snow
+    // hourly chance of rain
+    // hourly chance of snow
+  }
+
+  return hoursArray;
+};
 
 const createHourlyWeatherItem = () => {
   let container = document.createElement("div");
@@ -38,4 +77,4 @@ const createHourlyWeather = () => {
   return container;
 };
 
-export default createHourlyWeather;
+export { createHourlyWeather, filterForecastDataForHourlyWeather };

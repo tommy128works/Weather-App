@@ -1,16 +1,16 @@
 import "../scss/styles.scss";
 import * as bootstrap from "bootstrap";
 
-// logic-related modules
 import {
   getCurrentWeatherData,
   getForecastWeatherData,
 } from "./weatherAPIHandler";
-
-// UI modules
 import createControlCenter from "./controlCenterUI";
 import createWeatherDetails from "./weatherDetailsUI";
-import createHourlyWeather from "./hourlyWeatherUI";
+import {
+  createHourlyWeather,
+  filterForecastDataForHourlyWeather,
+} from "./hourlyWeatherUI";
 import addDragToScroll from "./addDragToScroll";
 import createDailyWeather from "./dailyWeatherUI";
 import createFooter from "./footer";
@@ -58,6 +58,15 @@ const loadPage = async (location) => {
 
     let bottomPanel = document.createElement("div");
     bottomPanel.classList.add("bottom-panel");
+
+    // hour
+    // weather icon + chance of precipitation
+    // maybe need weather condition to check if its snowing or raining
+    // hourly temperature
+    console.log(forecastData);
+    let hourlyData = filterForecastDataForHourlyWeather(forecastData);
+    console.log(hourlyData);
+
     bottomPanel.appendChild(createHourlyWeather());
     bottomPanel.appendChild(createDailyWeather());
 
@@ -71,4 +80,5 @@ const loadPage = async (location) => {
   }
 };
 
-loadPage("lOS ANGELES");
+// loadPage("lOS ANGELES");
+loadPage("los angeles");
