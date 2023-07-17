@@ -10,8 +10,7 @@ const createHourlyWeatherItem = () => {
   container.appendChild(hour);
 
   // weather icon
-  // need to call weatherIcon module to decide what icon to input
-  // for now, put a dummy icon provided by WeatherAPI
+  // fetched WeatherAPI data provide weather icon image link
   const myIcon = new Image();
   myIcon.src = dummyIcon;
   container.appendChild(myIcon);

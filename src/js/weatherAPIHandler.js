@@ -9,7 +9,6 @@ const getCurrentWeatherData = async (location) => {
     );
 
     const data = await response.json();
-    console.log(data);
 
     let localtime = data.location.localtime.split(" ");
 
@@ -34,7 +33,7 @@ const getCurrentWeatherData = async (location) => {
       // Humidity
       humidity: data.current.humidity,
       // Chance of Rain
-      
+
       // Precipitation
       precipitation_mm: data.current.precip_mm,
       precipitation_in: data.current.precip_in,
@@ -46,7 +45,6 @@ const getCurrentWeatherData = async (location) => {
       // Sunrise
 
       // Sunset
-
     };
 
     return data;
@@ -59,32 +57,18 @@ const getForecastWeatherData = async (location) => {
   try {
     const response = await fetch(
       "https://api.weatherapi.com/v1/forecast.json?key=e2f1b813fe00403ca3542726231905&q=" +
-        location + "&days=" + FORECAST_DAYS,
+        location +
+        "&days=" +
+        FORECAST_DAYS,
       { mode: "cors" }
     );
 
     const data = await response.json();
-    console.log(data);
-
-    let forecastData = {
-      // hours
-      hourlyData: data.forecast.forecastday
-      // weather condition.. with chance of rain/snow
-      // hourly temperature
-
-
-      // day
-      // weather condition.. with chance of rain/snow
-      // low temperature
-      // high temperature
-
-    };
 
     return data;
   } catch (error) {
     console.log(error);
   }
 };
-
 
 export { getCurrentWeatherData, getForecastWeatherData };
