@@ -1,43 +1,91 @@
 const MAXIMUM_HOURLY_FORECAST = 25;
 
-const convert24HourTo12Hour = (number) => {
-  if (number === 0) {
-    return "12AM";
-  } else if (number < 12) {
-    return number + "AM";
-  } else if (number === 12) {
-    return "12PM";
-  } else if (number > 12 && number < 24) {
-    return number - 12 + "PM";
-  } else if (number >= 24) {
-    return convert24HourTo12Hour(number - 24);
-  }
-};
+import convert24HourTo12Hour from "./convert24HourTo12Hour";
 
 const filterForecastDataForHourlyWeather = (forecastData) => {
   let localTime = forecastData.location.localtime.split(" ");
   let currentLocalTime = localTime[1].split(":");
   let startingHour = Number(currentLocalTime[0]);
 
-  let hoursArray = [];
+  let hours = [];
+  let weatherIcons = [];
+  let tempsC = [];
+  let tempsF = [];
+  let willItRain = [];
+  let willItSnow = [];
+  let rainChance = [];
+  let snowChance = [];
 
-  // need to create 25-index array for each property
   for (let i = 0; i < MAXIMUM_HOURLY_FORECAST; i++) {
-    // hours
     if (i === 0) {
-      hoursArray[i] = "Now";
+      hours[i] = "Now";
     } else {
-      hoursArray[i] = convert24HourTo12Hour(startingHour + i);
+      hours[i] = convert24HourTo12Hour(startingHour + i);
     }
-    // hourly weather icon
-    // hourly temperature
-    // hourly will it rain
-    // hourly will it snow
-    // hourly chance of rain
-    // hourly chance of snow
+
+    if (startingHour + i < 24) {
+      weatherIcons[i] =
+        forecastData.forecast.forecastday[0].hour[
+          startingHour + i
+        ].condition.icon;
+      tempsC[i] =
+        forecastData.forecast.forecastday[0].hour[startingHour + i].temp_c;
+      tempsF[i] =
+        forecastData.forecast.forecastday[0].hour[startingHour + i].temp_f;
+      willItRain[i] =
+        forecastData.forecast.forecastday[0].hour[
+          startingHour + i
+        ].will_it_rain;
+      willItSnow[i] =
+        forecastData.forecast.forecastday[0].hour[
+          startingHour + i
+        ].will_it_snow;
+      rainChance[i] =
+        forecastData.forecast.forecastday[0].hour[
+          startingHour + i
+        ].chance_of_rain;
+      snowChance[i] =
+        forecastData.forecast.forecastday[0].hour[
+          startingHour + i
+        ].chance_of_snow;
+    } else {
+      weatherIcons[i] =
+        forecastData.forecast.forecastday[1].hour[
+          startingHour + i - 24
+        ].condition.icon;
+      tempsC[i] =
+        forecastData.forecast.forecastday[1].hour[startingHour + i - 24].temp_c;
+      tempsF[i] =
+        forecastData.forecast.forecastday[1].hour[startingHour + i - 24].temp_f;
+      willItRain[i] =
+        forecastData.forecast.forecastday[1].hour[
+          startingHour + i - 24
+        ].will_it_rain;
+      willItSnow[i] =
+        forecastData.forecast.forecastday[1].hour[
+          startingHour + i - 24
+        ].will_it_snow;
+      rainChance[i] =
+        forecastData.forecast.forecastday[1].hour[
+          startingHour + i - 24
+        ].chance_of_rain;
+      snowChance[i] =
+        forecastData.forecast.forecastday[1].hour[
+          startingHour + i - 24
+        ].chance_of_snow;
+    }
   }
 
-  return hoursArray;
+  return {
+    hours,
+    weatherIcons,
+    tempsC,
+    tempsF,
+    willItRain,
+    willItSnow,
+    rainChance,
+    snowChance,
+  };
 };
 
 const createHourlyWeatherItem = () => {
