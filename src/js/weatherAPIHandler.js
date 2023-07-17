@@ -1,4 +1,4 @@
-const FORECAST_DAYS = 3;
+const MAXIMUM_FORECAST_DAYS = 3;
 
 const getCurrentWeatherData = async (location) => {
   try {
@@ -20,7 +20,7 @@ const getForecastWeatherData = async (location) => {
       "https://api.weatherapi.com/v1/forecast.json?key=e2f1b813fe00403ca3542726231905&q=" +
         location +
         "&days=" +
-        FORECAST_DAYS,
+        MAXIMUM_FORECAST_DAYS,
       { mode: "cors" }
     );
     const data = await response.json();

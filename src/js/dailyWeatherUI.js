@@ -1,5 +1,39 @@
-// dummy image until weatherIcon module is coded
-// import dummyIcon from "../assets/weather/64x64/day/113.png";
+const MAXIMUM_FORECAST_DAYS = 3;
+
+const filterForecastDataForDailyWeather = (forecastData) => {
+  let dates = [];
+  let weatherIcons = [];
+  let rainChances = [];
+  let snowChances = [];
+  let maxTempsC = [];
+  let minTempsC = [];
+  let maxTempsF = [];
+  let minTempsF = [];
+
+  for (let i = 0; i < MAXIMUM_FORECAST_DAYS; i++) {
+    dates[i] = forecastData.forecast.forecastday[i].date;
+    weatherIcons[i] = forecastData.forecast.forecastday[i].day.condition.icon;
+    rainChances[i] =
+      forecastData.forecast.forecastday[i].day.daily_chance_of_rain;
+    snowChances[i] =
+      forecastData.forecast.forecastday[i].day.daily_chance_of_snow;
+    maxTempsC[i] = forecastData.forecast.forecastday[i].day.maxtemp_c;
+    minTempsC[i] = forecastData.forecast.forecastday[i].day.mintemp_c;
+    maxTempsF[i] = forecastData.forecast.forecastday[i].day.maxtemp_f;
+    minTempsF[i] = forecastData.forecast.forecastday[i].day.maxtemp_f;
+  }
+
+  return {
+    dates,
+    weatherIcons,
+    rainChances,
+    snowChances,
+    maxTempsC,
+    minTempsC,
+    maxTempsF,
+    minTempsF,
+  };
+};
 
 const createDailyWeatherItem = () => {
   let container = document.createElement("div");
@@ -16,7 +50,7 @@ const createDailyWeatherItem = () => {
   // myIcon.src = dummyIcon;
   container.appendChild(myIcon);
 
-  // Daily Temperature > put dummy number for now
+  // Daily Temperature > use H:temp L:Temp format
   let temperature = document.createElement("div");
   temperature.textContent = "20 °C 10 °C";
   container.appendChild(temperature);
@@ -36,4 +70,4 @@ const createDailyWeather = () => {
   return container;
 };
 
-export default createDailyWeather;
+export { createDailyWeather, filterForecastDataForDailyWeather };

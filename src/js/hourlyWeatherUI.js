@@ -11,8 +11,6 @@ const filterForecastDataForHourlyWeather = (forecastData) => {
   let weatherIcons = [];
   let tempsC = [];
   let tempsF = [];
-  let willItRain = [];
-  let willItSnow = [];
   let rainChance = [];
   let snowChance = [];
 

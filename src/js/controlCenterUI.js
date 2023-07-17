@@ -30,12 +30,12 @@ const createControlCenter = (
   container.appendChild(currentTime);
 
   let currentTempC = document.createElement("div");
-  currentTempC.textContent = tempC + " °C";
+  currentTempC.textContent = tempC + "°C";
   currentTempC.classList.add("large-font", "bold");
   container.appendChild(currentTempC);
 
   let currentTempF = document.createElement("div");
-  currentTempF.textContent = tempF + " °F";
+  currentTempF.textContent = tempF + "°F";
   currentTempF.classList.add("large-font", "bold");
   container.appendChild(currentTempF);
 

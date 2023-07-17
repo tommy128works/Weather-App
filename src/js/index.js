@@ -12,7 +12,10 @@ import {
   filterForecastDataForHourlyWeather,
 } from "./hourlyWeatherUI";
 import addDragToScroll from "./addDragToScroll";
-import createDailyWeather from "./dailyWeatherUI";
+import {
+  createDailyWeather,
+  filterForecastDataForDailyWeather,
+} from "./dailyWeatherUI";
 import createFooter from "./footer";
 
 const loadPage = async (location) => {
@@ -59,10 +62,7 @@ const loadPage = async (location) => {
     let bottomPanel = document.createElement("div");
     bottomPanel.classList.add("bottom-panel");
 
-    console.log(forecastData);
     let hourlyData = filterForecastDataForHourlyWeather(forecastData);
-    console.log(hourlyData);
-
     bottomPanel.appendChild(
       createHourlyWeather(
         hourlyData.hours,
@@ -73,6 +73,9 @@ const loadPage = async (location) => {
         hourlyData.snowChance
       )
     );
+
+    let dailyData = filterForecastDataForDailyWeather(forecastData);
+    console.log(dailyData);
     bottomPanel.appendChild(createDailyWeather());
 
     document.body.appendChild(bottomPanel);
