@@ -17,8 +17,10 @@ import createFooter from "./footer";
 
 const loadPage = async (location) => {
   try {
-    const currentData = await getCurrentWeatherData(location);
-    let forecastData = getForecastWeatherData(location);
+    let [currentData, forecastData] = await Promise.all([
+      getCurrentWeatherData(location),
+      getForecastWeatherData(location),
+    ]);
 
     let topPanel = document.createElement("div");
     topPanel.classList.add("panel-container", "top-panel");
@@ -37,7 +39,18 @@ const loadPage = async (location) => {
     leftPanel.classList.add("left-panel");
     topPanel.appendChild(leftPanel);
 
-    let rightPanel = createWeatherDetails();
+    let rightPanel = createWeatherDetails(
+      currentData.current.feelslike_c,
+      currentData.current.feelslike_f,
+      currentData.current.humidity,
+      currentData.current.precip_mm,
+      currentData.current.precip_in,
+      currentData.current.wind_kph,
+      currentData.current.wind_mph,
+      currentData.current.uv,
+      forecastData.forecast.forecastday[0].astro.sunrise,
+      forecastData.forecast.forecastday[0].astro.sunset
+    );
     rightPanel.classList.add("right-panel");
     topPanel.appendChild(rightPanel);
 

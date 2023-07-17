@@ -1,5 +1,5 @@
 // dummy image until weatherIcon module is coded
-import dummyIcon from "../assets/weather/64x64/day/113.png";
+// import dummyIcon from "../assets/weather/64x64/day/113.png";
 
 const createDailyWeatherItem = () => {
   let container = document.createElement("div");
@@ -13,7 +13,7 @@ const createDailyWeatherItem = () => {
   // need to call weatherIcon module to decide what icon to input
   // for now, put a dummy icon provided by WeatherAPI
   const myIcon = new Image();
-  myIcon.src = dummyIcon;
+  // myIcon.src = dummyIcon;
   container.appendChild(myIcon);
 
   // Daily Temperature > put dummy number for now

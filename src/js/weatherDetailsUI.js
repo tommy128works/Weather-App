@@ -1,14 +1,5 @@
-// put this into its own module because other modules will need this info
-// getWeatherIcon();
-// needs an additional array that matches API data code with array index
-const images = require.context("../assets/weather/64x64/day", true);
-const dayImageList = images.keys().map((image) => images(image));
-const nightImageList = images.keys().map((image) => images(image));
-
-// actual images
 import feelsLikeIcon from "../assets/weather-details-icons/feels-like.png";
 import humidityIcon from "../assets/weather-details-icons/humidity.png";
-import chanceOfRainIcon from "../assets/weather-details-icons/chance-of-rain.png";
 import precipitationIcon from "../assets/weather-details-icons/precipitation.png";
 import windSpeedIcon from "../assets/weather-details-icons/wind-speed.png";
 import UVIndexIcon from "../assets/weather-details-icons/UV-index.png";
@@ -29,9 +20,6 @@ const createWeatherDetailItem = (property, value) => {
       break;
     case "Humidity":
       myIcon.src = humidityIcon;
-      break;
-    case "Chance of Rain":
-      myIcon.src = chanceOfRainIcon;
       break;
     case "Precipitation":
       myIcon.src = precipitationIcon;
@@ -70,17 +58,42 @@ const createWeatherDetailItem = (property, value) => {
   return container;
 };
 
-const createWeatherDetails = () => {
+const createWeatherDetails = (
+  tempCFeelsLike,
+  tempFFeelsLike,
+  humidity,
+  precipitation_mm,
+  precipitation_in,
+  wind_kph,
+  wind_mph,
+  UVIndex,
+  sunrise,
+  sunset
+) => {
   let container = document.createElement("div");
 
-  container.appendChild(createWeatherDetailItem("Feels Like", "25 °C"));
-  container.appendChild(createWeatherDetailItem("Humidity", "46 %"));
-  container.appendChild(createWeatherDetailItem("Chance of Rain", "1 %"));
-  container.appendChild(createWeatherDetailItem("Precipitation", "1.47 cm")); // units depend on what WeatherAPI returns
-  container.appendChild(createWeatherDetailItem("Wind Speed", "9.6 km/h"));
-  container.appendChild(createWeatherDetailItem("UV Index", "0.56"));
-  container.appendChild(createWeatherDetailItem("Sunrise", "23:07"));
-  container.appendChild(createWeatherDetailItem("Sunset", "16:07"));
+  container.appendChild(
+    createWeatherDetailItem("Feels Like", tempCFeelsLike + " °C")
+  );
+  container.appendChild(
+    createWeatherDetailItem("Feels Like", tempFFeelsLike + " °F")
+  );
+  container.appendChild(createWeatherDetailItem("Humidity", humidity));
+  container.appendChild(
+    createWeatherDetailItem("Precipitation", precipitation_mm + " mm")
+  );
+  container.appendChild(
+    createWeatherDetailItem("Precipitation", precipitation_in + " in")
+  );
+  container.appendChild(
+    createWeatherDetailItem("Wind Speed", wind_kph + " km/h")
+  );
+  container.appendChild(
+    createWeatherDetailItem("Wind Speed", wind_mph + " mph")
+  );
+  container.appendChild(createWeatherDetailItem("UV Index", UVIndex));
+  container.appendChild(createWeatherDetailItem("Sunrise", sunrise));
+  container.appendChild(createWeatherDetailItem("Sunset", sunset));
 
   return container;
 };
