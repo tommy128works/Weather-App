@@ -59,15 +59,20 @@ const loadPage = async (location) => {
     let bottomPanel = document.createElement("div");
     bottomPanel.classList.add("bottom-panel");
 
-    // hour
-    // weather icon + chance of precipitation
-    // maybe need weather condition to check if its snowing or raining
-    // hourly temperature
     console.log(forecastData);
     let hourlyData = filterForecastDataForHourlyWeather(forecastData);
     console.log(hourlyData);
 
-    bottomPanel.appendChild(createHourlyWeather());
+    bottomPanel.appendChild(
+      createHourlyWeather(
+        hourlyData.hours,
+        hourlyData.weatherIcons,
+        hourlyData.tempsC,
+        hourlyData.tempsF,
+        hourlyData.rainChance,
+        hourlyData.snowChance
+      )
+    );
     bottomPanel.appendChild(createDailyWeather());
 
     document.body.appendChild(bottomPanel);
@@ -81,4 +86,4 @@ const loadPage = async (location) => {
 };
 
 // loadPage("lOS ANGELES");
-loadPage("sudbury");
+loadPage("valdez");

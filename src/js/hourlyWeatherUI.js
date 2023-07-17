@@ -1,6 +1,6 @@
-const MAXIMUM_HOURLY_FORECAST = 25;
-
 import convert24HourTo12Hour from "./convert24HourTo12Hour";
+
+const MAXIMUM_HOURLY_FORECAST = 25;
 
 const filterForecastDataForHourlyWeather = (forecastData) => {
   let localTime = forecastData.location.localtime.split(" ");
@@ -32,14 +32,6 @@ const filterForecastDataForHourlyWeather = (forecastData) => {
         forecastData.forecast.forecastday[0].hour[startingHour + i].temp_c;
       tempsF[i] =
         forecastData.forecast.forecastday[0].hour[startingHour + i].temp_f;
-      willItRain[i] =
-        forecastData.forecast.forecastday[0].hour[
-          startingHour + i
-        ].will_it_rain;
-      willItSnow[i] =
-        forecastData.forecast.forecastday[0].hour[
-          startingHour + i
-        ].will_it_snow;
       rainChance[i] =
         forecastData.forecast.forecastday[0].hour[
           startingHour + i
@@ -57,14 +49,6 @@ const filterForecastDataForHourlyWeather = (forecastData) => {
         forecastData.forecast.forecastday[1].hour[startingHour + i - 24].temp_c;
       tempsF[i] =
         forecastData.forecast.forecastday[1].hour[startingHour + i - 24].temp_f;
-      willItRain[i] =
-        forecastData.forecast.forecastday[1].hour[
-          startingHour + i - 24
-        ].will_it_rain;
-      willItSnow[i] =
-        forecastData.forecast.forecastday[1].hour[
-          startingHour + i - 24
-        ].will_it_snow;
       rainChance[i] =
         forecastData.forecast.forecastday[1].hour[
           startingHour + i - 24
@@ -81,36 +65,61 @@ const filterForecastDataForHourlyWeather = (forecastData) => {
     weatherIcons,
     tempsC,
     tempsF,
-    willItRain,
-    willItSnow,
     rainChance,
     snowChance,
   };
 };
 
-const createHourlyWeatherItem = () => {
+const createHourlyWeatherItem = (
+  hour,
+  weatherIcon,
+  tempC,
+  tempF,
+  rainChance,
+  snowChance
+) => {
   let container = document.createElement("div");
 
-  // Hour > put dummy for now because API might give hours for html textContent
-  let hour = document.createElement("div");
-  hour.textContent = "1 AM";
-  container.appendChild(hour);
+  let hourContainer = document.createElement("div");
+  hourContainer.textContent = hour;
+  container.appendChild(hourContainer);
 
-  // weather icon
-  // fetched WeatherAPI data provide weather icon image link
+  let weatherContainer = document.createElement("div");
+
   const myIcon = new Image();
-  // myIcon.src = dummyIcon;
-  container.appendChild(myIcon);
+  myIcon.src = weatherIcon;
+  weatherContainer.appendChild(myIcon);
 
-  // Hourly Temperature > put dummy number for now
-  let temperature = document.createElement("div");
-  temperature.textContent = "20 °C";
-  container.appendChild(temperature);
+  let precipitationChance = document.createElement("div");
+  if (rainChance > snowChance) {
+    precipitationChance.textContent = rainChance + "%";
+  } else if (snowChance > rainChance) {
+    precipitationChance.textContent = snowChance + "%";
+  } else if (rainChance === snowChance && rainChance !== 0) {
+    precipitationChance.textContent = rainChance + "%";
+  }
+  weatherContainer.appendChild(precipitationChance);
+  container.appendChild(weatherContainer);
+
+  let temperatureC = document.createElement("div");
+  temperatureC.textContent = tempC + "°C";
+  container.appendChild(temperatureC);
+
+  let temperatureF = document.createElement("div");
+  temperatureF.textContent = tempF + "°F";
+  container.appendChild(temperatureF);
 
   return container;
 };
 
-const createHourlyWeather = () => {
+const createHourlyWeather = (
+  hours,
+  weatherIcons,
+  tempsC,
+  tempsF,
+  rainChance,
+  snowChance
+) => {
   let container = document.createElement("div");
   container.classList.add(
     "horizontal-scroll-container",
@@ -118,8 +127,17 @@ const createHourlyWeather = () => {
   );
   container.setAttribute("id", "hourly-weather-container");
 
-  for (let i = 0; i < 24; i++) {
-    container.appendChild(createHourlyWeatherItem());
+  for (let i = 0; i < MAXIMUM_HOURLY_FORECAST; i++) {
+    container.appendChild(
+      createHourlyWeatherItem(
+        hours[i],
+        weatherIcons[i],
+        tempsC[i],
+        tempsF[i],
+        rainChance[i],
+        snowChance[i]
+      )
+    );
   }
 
   return container;
