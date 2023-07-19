@@ -96,10 +96,12 @@ const createDailyWeatherItem = (
 
   let temperatureC = document.createElement("div");
   temperatureC.textContent = "High: " + maxTempC + "°C Low: " + minTempC + "°C";
+  temperatureC.classList.add("metric-units");
   container.appendChild(temperatureC);
 
   let temperatureF = document.createElement("div");
   temperatureF.textContent = "High: " + maxTempF + "°F Low: " + minTempF + "°F";
+  temperatureF.classList.add("imperial-units");
   container.appendChild(temperatureF);
 
   return container;

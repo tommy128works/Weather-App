@@ -23,7 +23,7 @@ const convert24TimeTo12Time = (dateString) => {
   } else if (hour === 12) {
     return "12:" + time[1] + "PM";
   } else if (hour > 12 && hour < 24) {
-    return (hour - 12) + ":" + time[1] + "PM";
+    return hour - 12 + ":" + time[1] + "PM";
   }
 };
 

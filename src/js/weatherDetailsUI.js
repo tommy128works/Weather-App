@@ -55,6 +55,20 @@ const createWeatherDetailItem = (property, value) => {
 
   container.appendChild(rightPanel);
 
+  if (
+    String(value).includes("°C") ||
+    String(value).includes("km/h") ||
+    String(value).includes("mm")
+  ) {
+    container.classList.add("metric-units");
+  } else if (
+    String(value).includes("°F") ||
+    String(value).includes("mph") ||
+    String(value).includes("in")
+  ) {
+    container.classList.add("imperial-units");
+  }
+
   return container;
 };
 
@@ -91,9 +105,9 @@ const createWeatherDetails = (
   container.appendChild(
     createWeatherDetailItem("Wind Speed", wind_mph + " mph")
   );
-  container.appendChild(createWeatherDetailItem("UV Index", UVIndex));
   container.appendChild(createWeatherDetailItem("Sunrise", sunrise));
   container.appendChild(createWeatherDetailItem("Sunset", sunset));
+  container.appendChild(createWeatherDetailItem("UV Index", UVIndex));
 
   return container;
 };

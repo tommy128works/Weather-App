@@ -17,6 +17,7 @@ import {
   filterForecastDataForDailyWeather,
 } from "./dailyWeatherUI";
 import createFooter from "./footer";
+import addEventListenersToUnitsButtons from "./displayUnits";
 
 const addEventListenersToSearchBox = (id) => {
   let location = document.getElementById(id);
@@ -106,6 +107,7 @@ const loadPage = async (location) => {
       document.body.appendChild(createFooter());
 
       addEventListenersToSearchBox("location");
+      addEventListenersToUnitsButtons();
     } else {
       let searchBoxMessage = document.getElementById("search-box-message");
       searchBoxMessage.textContent =

@@ -1,10 +1,6 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
-// * {
-//   border: solid 2px red;
-// }
-
 body {
   margin: 0;
   background-color: #dddddd;
@@ -168,4 +164,8 @@ footer {
       display: none;
     }
   }
+}
+
+.hidden {
+  display: none;
 }

@@ -33,22 +33,24 @@ const createControlCenter = (
 
   let currentTempC = document.createElement("div");
   currentTempC.textContent = tempC + "°C";
-  currentTempC.classList.add("large-font", "bold");
+  currentTempC.classList.add("large-font", "bold", "metric-units");
   container.appendChild(currentTempC);
 
   let currentTempF = document.createElement("div");
   currentTempF.textContent = tempF + "°F";
-  currentTempF.classList.add("large-font", "bold");
+  currentTempF.classList.add("large-font", "bold", "imperial-units");
   container.appendChild(currentTempF);
 
-  let temperatureUnitsButton = document.createElement("button");
-  temperatureUnitsButton.textContent = "Display °F";
-  temperatureUnitsButton.classList.add("small-font");
-  container.appendChild(temperatureUnitsButton);
+  let unitsButton = document.createElement("button");
+  unitsButton.textContent = "Toggle Units";
+  unitsButton.classList.add("small-font", "units-button");
+  container.appendChild(unitsButton);
 
+  let imageContainer = document.createElement("div");
   const myIcon = new Image();
   myIcon.src = weatherIcon;
-  container.appendChild(myIcon);
+  imageContainer.appendChild(myIcon);
+  container.appendChild(imageContainer);
 
   let searchBoxContainer = document.createElement("div");
 

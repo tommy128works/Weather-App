@@ -101,10 +101,12 @@ const createHourlyWeatherItem = (
 
   let temperatureC = document.createElement("div");
   temperatureC.textContent = tempC + "°C";
+  temperatureC.classList.add("metric-units");
   container.appendChild(temperatureC);
 
   let temperatureF = document.createElement("div");
   temperatureF.textContent = tempF + "°F";
+  temperatureF.classList.add("imperial-units");
   container.appendChild(temperatureF);
 
   return container;
