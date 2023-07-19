@@ -1,4 +1,4 @@
-import convert24HourTo12Hour from "./convert24HourTo12Hour";
+import { convert24HourTo12Hour } from "./convert24HourTo12Hour";
 
 const MAXIMUM_HOURLY_FORECAST = 25;
 

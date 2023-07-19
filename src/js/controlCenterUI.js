@@ -1,3 +1,5 @@
+import { convert24TimeTo12Time } from "./convert24HourTo12Hour";
+
 const createControlCenter = (
   weatherCondition,
   location,
@@ -25,7 +27,7 @@ const createControlCenter = (
   container.appendChild(currentDate);
 
   let currentTime = document.createElement("div");
-  currentTime.textContent = time;
+  currentTime.textContent = convert24TimeTo12Time(time);
   currentTime.classList.add("small-font");
   container.appendChild(currentTime);
 

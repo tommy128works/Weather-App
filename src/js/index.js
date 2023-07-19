@@ -117,5 +117,4 @@ const loadPage = async (location) => {
   }
 };
 
-// loadPage("lOS ANGELES");
 loadPage("Vancouver");
