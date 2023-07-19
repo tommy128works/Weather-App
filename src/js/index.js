@@ -18,6 +18,16 @@ import {
 } from "./dailyWeatherUI";
 import createFooter from "./footer";
 
+const addEventListenersToSearchBox = (id) => {
+  let location = document.getElementById(id);
+
+  location.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      loadPage(location.value);
+    }
+  });
+};
+
 const loadPage = async (location) => {
   try {
     let [currentData, forecastData] = await Promise.all([
@@ -25,6 +35,7 @@ const loadPage = async (location) => {
       getForecastWeatherData(location),
     ]);
 
+    document.body.innerHTML = "";
     let topPanel = document.createElement("div");
     topPanel.classList.add("panel-container", "top-panel");
 
@@ -87,17 +98,21 @@ const loadPage = async (location) => {
         dailyData.minTempsF
       )
     );
-    console.log(dailyData.dates);
 
     document.body.appendChild(bottomPanel);
     addDragToScroll("hourly-weather-container");
 
     document.body.appendChild(createFooter());
+
+    addEventListenersToSearchBox("location");
   } catch (error) {
     console.log(error);
     console.log("Unable to retrieve weather data");
+    // let searchBoxMessage = document.getElementById("search-box-message");
+    // searchBoxMessage.textContent =
+    //   'Location not found. Search must be in the form of "City", "City, State" or "City, Country"';
   }
 };
 
 // loadPage("lOS ANGELES");
-loadPage("mississauga");
+loadPage("Vancouver");

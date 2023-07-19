@@ -50,7 +50,7 @@ const createDailyWeatherItem = (
   const d = new Date(date);
   // new Date() subtracts a day automatically.
   // I add 1 to compensate for this bug.
-  let day = d.getDay() + 1; 
+  let day = d.getDay() + 1;
 
   let dayOfTheWeek = document.createElement("div");
   switch (day) {
@@ -95,11 +95,11 @@ const createDailyWeatherItem = (
   container.appendChild(weatherContainer);
 
   let temperatureC = document.createElement("div");
-  temperatureC.textContent = "High: " + maxTempC + "°C Low: " + minTempC + "°C"; 
+  temperatureC.textContent = "High: " + maxTempC + "°C Low: " + minTempC + "°C";
   container.appendChild(temperatureC);
-  
+
   let temperatureF = document.createElement("div");
-  temperatureF.textContent = "High: " + maxTempF + "°F Low: " + minTempF + "°F"; 
+  temperatureF.textContent = "High: " + maxTempF + "°F Low: " + minTempF + "°F";
   container.appendChild(temperatureF);
 
   return container;
@@ -119,16 +119,18 @@ const createDailyWeather = (
   container.classList.add("daily-weather-container");
 
   for (let i = 0; i < MAXIMUM_FORECAST_DAYS; i++) {
-    container.appendChild(createDailyWeatherItem(
-      dates[i],
-      weatherIcons[i],
-      rainChances[i],
-      snowChances[i],
-      maxTempsC[i],
-      minTempsC[i],
-      maxTempsF[i],
-      minTempsF[i]
-    ));
+    container.appendChild(
+      createDailyWeatherItem(
+        dates[i],
+        weatherIcons[i],
+        rainChances[i],
+        snowChances[i],
+        maxTempsC[i],
+        minTempsC[i],
+        maxTempsF[i],
+        minTempsF[i]
+      )
+    );
   }
 
   return container;

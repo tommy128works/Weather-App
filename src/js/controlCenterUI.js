@@ -48,6 +48,20 @@ const createControlCenter = (
   myIcon.src = weatherIcon;
   container.appendChild(myIcon);
 
+  let searchBoxContainer = document.createElement("div");
+
+  let searchBoxInput = document.createElement("input");
+  searchBoxInput.setAttribute("type", "text");
+  searchBoxInput.setAttribute("id", "location");
+  searchBoxInput.setAttribute("placeholder", "Search Location...");
+  searchBoxContainer.appendChild(searchBoxInput);
+
+  let searchBoxMessage = document.createElement("div");
+  searchBoxMessage.setAttribute("id", "search-box-message");
+  searchBoxContainer.appendChild(searchBoxMessage);
+
+  container.appendChild(searchBoxContainer);
+
   return container;
 };
 
