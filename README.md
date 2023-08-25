@@ -1,6 +1,13 @@
 # Weather-App
 
-Find out the weather of a location!
+
+## Project Description
+
+Find out a city's weather using this Weather App!
+
+
+> [!NOTE]
+> The
 
 This is a learning exercise for APIs, Fetch, Promises, and Async/Await.
 
