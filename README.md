@@ -2,7 +2,7 @@
 
 ![Screenshot of the App Overview](/src/assets/screenshots/Weather_App_Showcase.png)
 
-
+[View DEMO Here!](https://tommy128works.github.io/Weather-App/)
 
 ## Project Description
 
@@ -37,7 +37,7 @@ npm install
 npm start
 ```
 
-Otherwise, please check out the [DEMO!](ADDD LINKKK)
+Otherwise, please check out the [DEMO!](https://tommy128works.github.io/Weather-App/)
 
 ## How to Use the Project
 
