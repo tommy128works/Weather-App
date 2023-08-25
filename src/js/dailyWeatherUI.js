@@ -51,7 +51,6 @@ const createDailyWeatherItem = (
   // new Date() subtracts a day automatically.
   // I add 1 to compensate for this bug.
   let day = d.getDay() + 1;
-  console.log(day);
 
   let dayOfTheWeek = document.createElement("div");
   switch (day) {

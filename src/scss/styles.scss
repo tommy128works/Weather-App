@@ -10,6 +10,10 @@ body {
   min-height: 100vh;
 }
 
+.top-panel, .bottom-panel {
+  padding: 0 5px;
+}
+
 footer {
   background-color: #8c8c8c;
   color: black;
@@ -41,19 +45,19 @@ footer {
 }
 
 .large-font {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .medium-font {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .small-font {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .smallest-font {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .panel-container {
@@ -64,6 +68,7 @@ footer {
 
 .top-panel {
   margin: 10px;
+
 }
 
 .left-panel {
@@ -78,15 +83,25 @@ footer {
   justify-content: center;
 }
 
+.top-panel > .right-panel {
+  border: 2px solid #327eed;
+  border-radius: 25px;
+}
+
 .bottom-panel {
   flex: 1;
   margin: 10px;
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
 }
 
 .weather-detail-container {
   display: flex;
   width: 20vw;
   margin: auto;
+  
 
   img {
     max-height: 50px;
@@ -113,6 +128,10 @@ footer {
 }
 
 .hourly-weather-container {
+  margin-top: 20px;
+  border: 2px solid #327eed;
+  border-radius: 25px;
+
   div {
     width: 10vw;
 
@@ -128,6 +147,12 @@ footer {
 }
 
 .daily-weather-container {
+  width: 60vw;
+  padding: 10px;
+  border: 2px solid #327eed;
+  border-radius: 25px;
+  margin: 20px auto 0;
+
   div {
     display: flex;
 
@@ -145,16 +170,24 @@ footer {
     flex-direction: column;
   }
 
+  .left-panel {
+    margin-bottom: 20px;
+  }
+
   .weather-detail-container {
     display: flex;
     width: 30vw;
-    margin: 10px;
+    margin: 0;
   }
 
   .hourly-weather-container {
     div {
       width: 25vw;
     }
+  }
+
+  .daily-weather-container {
+    width: 100%;
   }
 
   footer {
